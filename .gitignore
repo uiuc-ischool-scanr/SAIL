@@ -8,3 +8,4 @@ build/*.*
 /WEB-INF/
 /build/
 /dist/
+installer/*.*
