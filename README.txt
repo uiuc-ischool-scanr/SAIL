@@ -19,7 +19,7 @@ Contributors:
 License:
 --------
 ### SAIL Application Executable Files
-The SAIL Application Executable Files (i.e. SAIL.dmg, SAIL-x64.exe, SAIL-x86.exe, SAIL.jar, and SAIL.zip) are licensed under **GNU General Public License version 3.0 or later** license.
+The SAIL Application Executable Files (i.e. SAIL.dmg, SAIL-1.0-x64.exe, SAIL-1.0-x86.exe, SAIL.jar, and SAIL.zip) are licensed under **GNU General Public License version 3.0 or later** license.
 
 The executable files include the following:
 * The application code, packaged into a set of JAR files, plus any other application resources (data files, native libraries)
