@@ -1,0 +1,352 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Copyright (c) 2015 University of Illinois Board of Trustees, All rights reserved.
+Developed at GSLIS/ the iSchool, by Dr. Jana Diesner, Shubhanshu Mishra, Liang Tao, and Chieh-Li Chin.    
+This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation; either version 2 of the License, or any later version.
+This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.
+You should have received a copy of the GNU General Public License along with this program; if not, see <http://www.gnu.org/licenses>.
+ -->
+
+<?import javafx.scene.chart.*?>
+<?import javafx.scene.web.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.net.*?>
+<?import java.util.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.paint.*?>
+
+<AnchorPane depthTest="ENABLE" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="frontend.GUIController">
+<stylesheets>
+  <URL value="@GUI.css" />
+</stylesheets>
+   <children>
+      <VBox AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <MenuBar>
+              <menus>
+                <Menu mnemonicParsing="false" text="File">
+                  <items>
+                    <MenuItem mnemonicParsing="false" text="Close" />
+                  </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="Edit">
+                  <items>
+                    <MenuItem mnemonicParsing="false" text="Delete" />
+                  </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="Help">
+                  <items>
+                    <MenuItem id="aboutMenu" fx:id="aboutMenu" mnemonicParsing="false" onAction="#showAbout" text="About" />
+                  </items>
+                </Menu>
+              </menus>
+            </MenuBar>
+            <TabPane id="tabPane" fx:id="tabPane" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" style="-fx-background-color: green;">
+               <tabs>
+                  <Tab fx:id="tab1" closable="false" style="-fx-font-size: 16; -fx-font-family: Arial;" text="Load Data">
+                     <content>
+                        <AnchorPane id="AnchorPane" styleClass="background">
+                          <children>
+                            <AnchorPane id="anchorPane2" styleClass="top-segment" AnchorPane.bottomAnchor="60.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                              <children>
+                                <VBox id="VBox" alignment="CENTER" layoutX="35.5" layoutY="19.5" prefHeight="354.0" prefWidth="725.0" spacing="5.0" AnchorPane.bottomAnchor="29.0" AnchorPane.leftAnchor="34.0" AnchorPane.rightAnchor="42.0" AnchorPane.topAnchor="18.0">
+                                  <children>
+                                          <HBox id="folder" alignment="CENTER_LEFT" prefHeight="60.0" prefWidth="866.0">
+                                             <children>
+                                                <Button mnemonicParsing="false" onAction="#chooseInput" prefHeight="32.0" prefWidth="82.0" text="Input">
+                                                   <HBox.margin>
+                                                      <Insets left="50.0" />
+                                                   </HBox.margin>
+                                                </Button>
+                                                <TextField fx:id="inFolder" prefHeight="30.0" prefWidth="334.0">
+                                                   <HBox.margin>
+                                                      <Insets left="10.0" />
+                                                   </HBox.margin>
+                                                </TextField>
+                                             </children>
+                                             <opaqueInsets>
+                                                <Insets bottom="30.0" />
+                                             </opaqueInsets>
+                                          </HBox>
+                                          <HBox id="folder" alignment="CENTER_LEFT" prefHeight="60.0" prefWidth="866.0">
+                                             <children>
+                                                <Button mnemonicParsing="false" onAction="#chooseOutput" prefHeight="32.0" prefWidth="82.0" text="Output">
+                                                   <HBox.margin>
+                                                      <Insets left="50.0" />
+                                                   </HBox.margin>
+                                                </Button>
+                                                <TextField fx:id="outFolder" prefHeight="31.0" prefWidth="333.0">
+                                                   <HBox.margin>
+                                                      <Insets left="10.0" />
+                                                   </HBox.margin>
+                                                </TextField>
+                                             </children>
+                                             <opaqueInsets>
+                                                <Insets bottom="30.0" />
+                                             </opaqueInsets>
+                                          </HBox>
+                                          <HBox id="folder" alignment="CENTER_LEFT" prefHeight="60.0" prefWidth="866.0">
+                                             <children>
+                                                <ComboBox fx:id="predModel" prefWidth="150.0" styleClass="combo">
+                                                   <HBox.margin>
+                                                      <Insets left="50.0" />
+                                                   </HBox.margin></ComboBox>
+                                                <CheckBox fx:id="predicted" mnemonicParsing="false" prefHeight="26.0" prefWidth="120.0" text="Predicted?" textFill="#e1d0d0">
+                                                   <HBox.margin>
+                                                      <Insets left="50.0" />
+                                                   </HBox.margin>
+                                                </CheckBox>
+                                                <CheckBox fx:id="visualize" mnemonicParsing="false" prefHeight="26.0" prefWidth="120.0" text="Visualize?" textFill="#e1d0d0">
+                                                   <HBox.margin>
+                                                      <Insets left="50.0" />
+                                                   </HBox.margin>
+                                                </CheckBox>
+                                             </children>
+                                             <opaqueInsets>
+                                                <Insets bottom="30.0" />
+                                             </opaqueInsets>
+                                          </HBox>
+                                          <HBox prefHeight="35.0" prefWidth="721.0">
+                                             <children>
+                                                <CheckBox mnemonicParsing="false" selected="true">
+                                                   <HBox.margin>
+                                                      <Insets left="50.0" />
+                                                   </HBox.margin>
+                                                </CheckBox>
+                                                <Label prefWidth="120.0" text=" tweet_text" />
+                                                <ComboBox fx:id="combo1" prefWidth="150.0" />
+                                                <CheckBox mnemonicParsing="false" selected="true">
+                                                   <HBox.margin>
+                                                      <Insets left="100.0" />
+                                                   </HBox.margin>
+                                                </CheckBox>
+                                                <Label prefWidth="140.0" text=" Twitter Followers" />
+                                                <ComboBox fx:id="combo2" prefWidth="150.0" />
+                                             </children>
+                                             <VBox.margin>
+                                                <Insets left="40.0" top="10.0" />
+                                             </VBox.margin>
+                                          </HBox>
+                                          <HBox prefHeight="35.0" prefWidth="721.0">
+                                             <children>
+                                                <CheckBox mnemonicParsing="false" selected="true">
+                                                   <HBox.margin>
+                                                      <Insets left="50.0" />
+                                                   </HBox.margin>
+                                                </CheckBox>
+                                                <Label prefWidth="120.0" text=" user" />
+                                                <ComboBox fx:id="combo3" prefWidth="150.0" />
+                                                <CheckBox mnemonicParsing="false" selected="true">
+                                                   <HBox.margin>
+                                                      <Insets left="100.0" />
+                                                   </HBox.margin>
+                                                </CheckBox>
+                                                <Label prefWidth="140.0" text=" Twitter Following" />
+                                                <ComboBox fx:id="combo4" prefWidth="150.0" />
+                                             </children>
+                                             <VBox.margin>
+                                                <Insets left="40.0" />
+                                             </VBox.margin>
+                                          </HBox>
+                                          <HBox prefHeight="35.0" prefWidth="721.0">
+                                             <children>
+                                                <CheckBox mnemonicParsing="false" selected="true">
+                                                   <HBox.margin>
+                                                      <Insets left="50.0" />
+                                                   </HBox.margin>
+                                                </CheckBox>
+                                                <Label prefWidth="120.0" text=" published_date" />
+                                                <ComboBox fx:id="combo5" prefWidth="150.0" />
+                                                <CheckBox mnemonicParsing="false" selected="true">
+                                                   <HBox.margin>
+                                                      <Insets left="100.0" />
+                                                   </HBox.margin>
+                                                </CheckBox>
+                                                <Label prefWidth="140.0" text=" Twitter Reply Count" />
+                                                <ComboBox fx:id="combo6" prefWidth="150.0" />
+                                             </children>
+                                             <VBox.margin>
+                                                <Insets left="40.0" />
+                                             </VBox.margin>
+                                          </HBox>
+                                          <HBox prefHeight="35.0" prefWidth="721.0">
+                                             <children>
+                                                <CheckBox mnemonicParsing="false" selected="true">
+                                                   <HBox.margin>
+                                                      <Insets left="50.0" />
+                                                   </HBox.margin>
+                                                </CheckBox>
+                                                <Label prefWidth="120.0" text="sentiment">
+                                                   <HBox.margin>
+                                                      <Insets />
+                                                   </HBox.margin>
+                                                </Label>
+                                                <ComboBox fx:id="combo7" prefWidth="150.0" />
+                                                <CheckBox mnemonicParsing="false" selected="true">
+                                                   <HBox.margin>
+                                                      <Insets left="100.0" />
+                                                   </HBox.margin>
+                                                </CheckBox>
+                                                <Label prefWidth="140.0" text=" Twitter Retweets" />
+                                                <ComboBox fx:id="combo8" prefWidth="150.0" />
+                                             </children>
+                                             <VBox.margin>
+                                                <Insets left="40.0" />
+                                             </VBox.margin>
+                                          </HBox>
+                                          <HBox prefHeight="35.0" prefWidth="721.0">
+                                             <children>
+                                                <CheckBox mnemonicParsing="false" selected="true">
+                                                   <HBox.margin>
+                                                      <Insets left="50.0" />
+                                                   </HBox.margin>
+                                                </CheckBox>
+                                                <Label prefWidth="120.0" text="url" />
+                                                <ComboBox fx:id="combo9" prefWidth="150.0" />
+                                                <CheckBox mnemonicParsing="false" selected="true">
+                                                   <HBox.margin>
+                                                      <Insets left="100.0" />
+                                                   </HBox.margin>
+                                                </CheckBox>
+                                                <Label prefWidth="140.0" text=" Twitter Tweets" />
+                                                <ComboBox fx:id="combo10" prefWidth="150.0" />
+                                             </children>
+                                             <VBox.margin>
+                                                <Insets left="40.0" />
+                                             </VBox.margin>
+                                          </HBox>
+                                  </children>
+                                </VBox>
+                              </children>
+                            </AnchorPane>
+                              <HBox alignment="BOTTOM_CENTER" layoutX="78.0" layoutY="404.0">
+                                 <children>
+                                  <Button fx:id="next1" defaultButton="true" layoutX="370.0" layoutY="448.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onAction="#processLogin" prefHeight="35.0" prefWidth="100.0" text="Next" AnchorPane.bottomAnchor="20.0" />
+                                 </children>
+                                 <padding>
+                                    <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                 </padding>
+                              </HBox>
+                          </children>
+                          <stylesheets>
+                            <URL value="@GUI.css" />
+                          </stylesheets>
+                        </AnchorPane>
+                     </content>
+                  </Tab>
+                  <Tab fx:id="tab3" closable="false" style="-fx-font-size: 16; -fx-font-family: Arial;" text="Annotate">
+                    <content>
+                      <AnchorPane id="anchorPane2" fx:id="anchorPane2" styleClass="background">
+                           <children>
+                              <VBox prefHeight="354.0" prefWidth="725.0" AnchorPane.bottomAnchor="29.0" AnchorPane.leftAnchor="34.0" AnchorPane.rightAnchor="42.0" AnchorPane.topAnchor="18.0">
+                                 <children>
+                                    <HBox>
+                                       <children>
+                                          <Label alignment="CENTER" prefWidth="140.0" text="Choose Dataset" textAlignment="CENTER">
+                                             <font>
+                                                <Font size="14.0" />
+                                             </font>
+                                             <HBox.margin>
+                                                <Insets top="10.0" />
+                                             </HBox.margin>
+                                          </Label>
+                                          <ComboBox fx:id="outFiles" layoutX="140.0" onAction="#updateTable" prefWidth="150.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="40.0" AnchorPane.topAnchor="10.0" />
+                                       </children>
+                                       <VBox.margin>
+                                          <Insets bottom="10.0" top="10.0" />
+                                       </VBox.margin>
+                                    </HBox>
+                                    <TableView fx:id="featureTable" editable="true" prefHeight="332.0" prefWidth="1200.0" tableMenuButtonVisible="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                      <columns>
+		                                  <TableColumn fx:id="tweetText" prefWidth="1022.0" style="-fx-font-size: 14; -fx-font-family: Arial;" text="Tweet" />
+		                                  <TableColumn fx:id="tweetLabel" maxWidth="200.0" prefWidth="87.0" style="-fx-font-size: 14; -fx-font-family: Arial;" text="Label" />
+		                                  <TableColumn fx:id="tweetFeature" maxWidth="300.0" prefWidth="91.0" style="-fx-font-size: 14; -fx-font-family: Arial;" text="Feature" />
+		                                  <TableColumn fx:id="tweetProb" maxWidth="100.0" prefWidth="100.0" style="-fx-font-size: 14; -fx-font-family: Arial;" text="Probability" />
+                                      </columns>
+                                       <VBox.margin>
+                                          <Insets />
+                                       </VBox.margin>
+                                       <columnResizePolicy>
+                                          <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                                       </columnResizePolicy>
+                                    </TableView>
+                                    <HBox>
+                                       <children>
+                                          <Button id="save2" fx:id="save2" defaultButton="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onAction="#processSaveChange" prefHeight="35.0" prefWidth="100.0" text="Save">
+                                             <HBox.margin>
+                                                <Insets left="50.0" top="15.0" />
+                                             </HBox.margin>
+                                          </Button>
+                                          <Button id="button2" fx:id="next13" defaultButton="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onAction="#processSave" prefHeight="35.0" prefWidth="100.0" text="Next">
+                                             <HBox.margin>
+                                                <Insets left="50.0" top="15.0" />
+                                             </HBox.margin>
+                                          </Button>
+                                       </children>
+                                    </HBox>
+                                 </children>
+                              </VBox>
+                           </children>
+                          <stylesheets>
+                            <URL value="@GUI.css" />
+                          </stylesheets>
+                      </AnchorPane>
+                    </content>
+                  </Tab>
+                  <Tab fx:id="tab5" closable="false" style="-fx-font-size: 16; -fx-font-family: Arial;" text="Retrain Model">
+                    <content>
+                      <AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" styleClass="background">
+                           <children>
+                              <HBox id="VBox" alignment="CENTER" layoutX="1.5" layoutY="1.5" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="382.0" prefWidth="1010.0" spacing="5.0" AnchorPane.bottomAnchor="88.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                 <children>
+                                    <TextArea id="retrainOutput" fx:id="retrainOutput" promptText="Retraining Output" />
+                                    <LineChart fx:id="metricsUpdate" prefHeight="204.0" title="Incremental Update of Metrics">
+                                      <xAxis>
+                                        <NumberAxis label="Increment Steps" side="BOTTOM" fx:id="xAxis" />
+                                      </xAxis>
+                                      <yAxis>
+                                        <NumberAxis fx:id="yAxis" forceZeroInRange="false" label="F1-Score (%)" side="LEFT" />
+                                      </yAxis>
+                                    </LineChart>
+                                 </children>
+                                 <padding>
+                                    <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+                                 </padding>
+                              </HBox>
+                              <HBox id="folder" alignment="BOTTOM_LEFT" layoutY="404.0" prefHeight="66.0" prefWidth="866.0">
+
+                                 <children>
+                                    <Button fx:id="retrain" mnemonicParsing="false" onAction="#retrainModel" prefHeight="32.0" prefWidth="82.0" text="Retrain">
+                                       <HBox.margin>
+                                          <Insets bottom="20.0" left="50.0" />
+                                       </HBox.margin>
+                                    </Button>
+                                 </children>
+                              </HBox>
+                           </children>
+                          </AnchorPane>
+                    </content>
+                  </Tab>
+               </tabs>
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
+            </TabPane>
+            <AnchorPane opacity="0.89" style="-fx-background-image: url(&quot;CoarseGrid.png&quot;); -fx-background-color: linear-gradient(#38424b 0%, #1f2429 20%, #191d22 100%),        linear-gradient(#20262b, #191d22),        radial-gradient(center 50% 0%, radius 100%, rgba(114,131,148,0.9), rgba(255,255,255,0));">
+               <children>
+                  <VBox alignment="CENTER_RIGHT" layoutY="10.0" prefHeight="60.0" prefWidth="341.0" AnchorPane.bottomAnchor="20.0" AnchorPane.rightAnchor="100.0">
+                     <children>
+                        <Label fx:id="progressMessage" alignment="CENTER_RIGHT" contentDisplay="CENTER" prefHeight="35.0" prefWidth="100.0" text="Task Progress" textAlignment="JUSTIFY" />
+                        <ProgressBar fx:id="progressBar" prefHeight="20.0" prefWidth="315.0" progress="0.0" />
+                     </children>
+                  </VBox>
+               </children>
+            </AnchorPane>
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>

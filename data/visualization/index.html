@@ -1,0 +1,48 @@
+<head>
+	<title>Twitter Sentiment</title>
+</head>
+<style type="text/css">
+
+</style>
+
+<link rel="stylesheet" type="text/css" href="./css/style.css">
+<h2 align="center">Twitter Sentiment Classification Visualization</h2>
+<div id="fileSwitcher">
+	<select multiple id="files" class="form-control"></select>
+</div>
+<div id="graphs">
+	
+</div>
+<div id="controls">
+	<div class="switches">
+		<span>Important Dates:</span>
+		<div class="onoffswitch">
+	    <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="switchlines" checked>
+	    <label class="onoffswitch-label" for="switchlines">
+	        <span class="onoffswitch-inner"></span>
+	        <span class="onoffswitch-switch"></span>
+	    </label>
+	    </div>
+	</div>
+	<div class="switches">
+		<span>Highlight Moderator:</span>
+		<div class="onoffswitch">
+	    <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="switchhighlight" checked>
+	    <label class="onoffswitch-label" for="switchhighlight">
+	        <span class="onoffswitch-inner"></span>
+	        <span class="onoffswitch-switch"></span>
+	    </label>
+	    </div>
+	</div>
+	<div style="clear:both"></div>
+ </div>
+<pre id="debug"></pre>
+<script src="./js/jquery-2.1.1.min.js" type="text/javascript"></script>
+<script src="./js/d3.v3.min.js" charset="utf-8"></script>
+<script src="./js/d3.legend.js" charset="utf-8"></script>
+<script src="./js/d3.tip.min.js"></script>
+<script src="./js/groupVis_tweet.js" charset="utf-8"></script>
+<script src="./file_list.js" charset="utf-8"></script>
+<script src="./js/data_file.js" charset="utf-8"></script>
+<script src="./js/charts.js" charset="utf-8"></script>
+<script src="./js/controls_mod.js" charset="utf-8"></script>

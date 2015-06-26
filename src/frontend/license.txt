@@ -1,0 +1,10 @@
+GPL’s
+· WEKA: GPL license. Can be used for free if source code is made available. [ http://weka.wikispaces.com/Can+I+use+WEKA+in+commercial+applications%3F ] If source code is not open commercial license fee is required.
+· Ark-Tweet-NLP – GPL License https://github.com/brendano/ark-tweet-nlp/blob/master/LICENSE.txt 
+· MPQA Subjectivity Lexicon: GPL License http://mpqa.cs.pitt.edu/ 
+ 
+Apaches
+· Twitter-Text: Apache 2.0 License https://github.com/twitter/twitter-text
+· Twitter4j: Apache 2.0 License
+· OpenCSV: Apache 2.0 License
+· Apache Commons Lang3: Apache 2.0 License
