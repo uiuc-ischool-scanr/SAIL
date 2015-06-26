@@ -9,3 +9,5 @@ build/*.*
 /build/
 /dist/
 installer/*.*
+new_installer/*.*
+
