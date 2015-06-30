@@ -10,5 +10,5 @@
 /WEB-INF/
 /dist/
 
-new_installer/*.*
+/new_installer/*.*
 
