@@ -1,0 +1,244 @@
+<?xml version="1.0" encoding="UTF-8"?>
+	<project name="SAIL" default="do-deploy" basedir="."  xmlns:fx="javafx:com.sun.javafx.tools.ant">
+	<target name="init-fx-tasks">
+		<echo message="JDK Home is ${java.home}"/>
+		<echo message="Make sure your JAVA_HOME is the jre packaged with the JDK and not a standalone JRE."/>		
+		<path id="fxant">
+			<filelist>
+				<file name="${java.home}\..\lib\ant-javafx.jar"/>
+				<file name="${java.home}\lib\jfxrt.jar"/>
+				<file name="${basedir}"/>
+			</filelist>
+		</path>
+	
+		<taskdef resource="com/sun/javafx/tools/ant/antlib.xml"      
+			uri="javafx:com.sun.javafx.tools.ant"
+			classpathref="fxant"/>
+	</target>
+	<target name="setup-staging-area">
+		<delete dir="externalLibs" />
+		<delete dir="project" />
+		<delete dir="projectRefs" />
+		
+		<mkdir dir="externalLibs" />
+		
+		<copy todir="externalLibs">
+			<fileset dir="..\lib">
+				<filename name="commons-lang3-3.1.jar"/>	
+			</fileset>
+		</copy>
+		<copy todir="externalLibs">
+			<fileset dir="..\lib">
+				<filename name="twitter-text-1.9.1.jar"/>	
+			</fileset>
+		</copy>
+		<copy todir="externalLibs">
+			<fileset dir="..\lib">
+				<filename name="weka.jar"/>	
+			</fileset>
+		</copy>
+		<copy todir="externalLibs">
+			<fileset dir="..\lib">
+				<filename name="twitter4j-core-4.0.1.jar"/>	
+			</fileset>
+		</copy>
+		<copy todir="externalLibs">
+			<fileset dir="..\lib">
+				<filename name="ark-tweet-nlp-0.3.2.jar"/>	
+			</fileset>
+		</copy>
+		<copy todir="externalLibs">
+			<fileset dir="..\lib">
+				<filename name="opencsv-2.3.jar"/>	
+			</fileset>
+		</copy>
+		
+		
+		<mkdir dir="project" />
+		<copy todir="project">
+			<fileset dir="..">
+				<include name="src/**" />
+			</fileset>
+		</copy>
+		
+		<mkdir dir="projectRefs" />
+	</target>
+	<target name='do-compile'>
+		<delete dir="build" />
+		<mkdir dir="build/src" />
+		<mkdir dir="build/libs" />
+		<mkdir dir="build/classes" />
+	
+		<!-- Copy project-libs references -->
+		<copy todir="build/libs">
+			<fileset dir="externalLibs">
+				<include name="twitter4j-core-4.0.1.jar"/>
+				
+				<include name="weka.jar"/>
+				<include name="commons-lang3-3.1.jar"/>
+				<include name="ark-tweet-nlp-0.3.2.jar"/>
+				<include name="twitter-text-1.9.1.jar"/>
+				<include name="opencsv-2.3.jar"/>
+			</fileset>
+		</copy>
+	
+		<!-- Copy project references -->
+	
+		<!-- Copy project sources itself -->
+		<copy todir="build/src">
+			<fileset dir="project/src">
+				<include name="**/*"/>
+			</fileset>
+		</copy>
+	
+		<echo message="Ant running on Java version ${ant.java.version}"/>
+		<javac includeantruntime="false" source="1.8" target="1.8" srcdir="build/src" destdir="build/classes" encoding="Cp1252">
+			<classpath>
+				<fileset dir="build/libs">
+					<include name="*"/>
+				</fileset>
+				<filelist>
+					<file name="C:\Program Files (x86)\Java\jdk1.8.0_45\jre\lib\ext\jfxrt.jar"/>
+				</filelist>
+			</classpath>
+		</javac>
+		
+		<!-- Copy over none Java-Files -->
+		<copy todir="build/classes">
+		<fileset dir="project/src">
+			<exclude name="**/*.java"/>
+		</fileset>
+		</copy>
+	
+	
+	</target>
+	<target name="do-deploy" depends="setup-staging-area, do-compile, init-fx-tasks">
+		<delete dir="dist"/>
+		<delete dir="deploy" />
+		
+		<mkdir dir="dist" />
+		<mkdir dir="dist/libs" />
+		
+		<copy todir="dist/libs">
+			<fileset dir="externalLibs">
+				<include name="*" />
+			</fileset>
+		</copy>
+		
+		
+		<!-- Customization: add the resources folder used in the project -->
+												
+				<copy todir="dist">
+					<fileset dir="..">
+						<include name="LICENSE_GNU_GPLv2.txt" />
+						<include name="LICENSE_GNU_GPLv3.txt" />
+						<include name="README.txt" />
+					</fileset>
+				</copy>
+				
+				<mkdir dir="dist/data" />
+				<copy todir="dist/data" >
+					<fileset dir="../data">
+						<include name="**/*"/>
+					</fileset>	
+				</copy>
+				
+				<delete dir="package"/>
+				<mkdir dir="package" />
+				
+				<!-- Icons only for MacOSX -->
+				<mkdir dir="package/macosx" />
+				<copy todir="package/macosx">
+				    <fileset dir="../logo">
+				        <include name="SAIL.icns" />
+				    </fileset>
+				</copy>  
+										
+				<!-- Icons only for Windows -->
+				<mkdir dir="package/windows" />
+				<copy todir="package/windows">
+				    <fileset dir="../logo">
+				        <include name="SAIL.ico" />
+					   <include name="SAIL-setup-icon.bmp" />
+				    	<include name="SAIL.iss"/>
+					</fileset>
+				</copy>
+
+				<!-- Icons only for Linux -->
+				<mkdir dir="package/linux" />
+				<copy todir="package/linux">
+				    <fileset dir="../logo">
+				    	<include name="SAIL.png" />
+					</fileset>
+				</copy> 
+						
+				<fx:resources id="appRes">
+					<fx:fileset dir="dist" includes="SAIL.jar"/>
+					<fx:fileset dir="dist" includes="libs/**"/>
+					<fx:fileset dir="dist" includes="data/**"/>
+					<fx:fileset dir="dist" includes="LICENSE_GNU_GPLv2.txt" />
+					<fx:fileset dir="dist" includes="LICENSE_GNU_GPLv3.txt" />
+					<fx:fileset dir="dist" includes="README.txt" />
+				</fx:resources>  
+		
+		<!-- End of customization -->
+		
+		<fx:application id="fxApplication"
+			name="SAIL"
+			mainClass="frontend.GUI"
+			toolkit="fx"
+		/>
+	
+		<mkdir dir="build/classes/META-INF" />
+		
+		
+		
+		<fx:jar destfile="dist/SAIL.jar">
+			<fx:application refid="fxApplication"/>
+			<fileset dir="build/classes">
+			</fileset>
+			<fx:resources refid="appRes"/>
+			
+			<manifest>
+				<attribute name="Implementation-Vendor" value="University of Illinois"/>
+				<attribute name="Implementation-Title" value="SAIL"/>
+				<attribute name="Implementation-Version" value="1.0"/>
+				<attribute name="JavaFX-Feature-Proxy" value="None"/>
+			</manifest>
+		</fx:jar>
+		
+	
+		<mkdir dir="deploy" />
+		<!-- Need to use ${basedir} because somehow the ant task is calculating the directory differently -->
+		<fx:deploy
+			embedJNLP="false"
+			extension="false"
+			includeDT="false"
+			offlineAllowed="true"
+			outdir="${basedir}/deploy"
+			outfile="SAIL" nativeBundles="exe"
+			updatemode="background" 
+			>
+	
+			<fx:info title="SAIL" vendor="University of Illinois"/>
+			<fx:application refId="fxApplication"/>
+			<fx:resources refid="appRes"/>
+			<fx:preferences shortcut="true" menu="true"/>
+			
+			<!-- Custom JVM setup for application -->
+			<fx:platform basedir="${java.home}/../">
+			    <fx:jvmarg value="-Xmx1024m"/>
+			</fx:platform>
+			
+		</fx:deploy>
+		
+		<delete dir="../new_installer/windows32" />
+			<mkdir dir="../new_installer/windows32"/>
+			<copy todir="../new_installer/windows32">
+			    <fileset dir="deploy/bundles">
+			       <include name="SAIL-1.0.exe" />
+				</fileset>
+			</copy> 	
+		
+	</target>
+</project>
