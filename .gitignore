@@ -1,6 +1,6 @@
 /TweetsOnly.txt
-build/*
-!build/*.xml
+/build/*
+!/build/*.xml
 
 /temp/
 /output/
@@ -8,7 +8,6 @@ build/*
 /page/
 /input_full/
 /WEB-INF/
-/build/
 /dist/
 
 new_installer/*.*
