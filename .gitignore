@@ -1,5 +1,7 @@
 /TweetsOnly.txt
 build/*.*
+!build/*.xml
+
 /temp/
 /output/
 /input/
