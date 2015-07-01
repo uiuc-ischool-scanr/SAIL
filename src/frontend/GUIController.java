@@ -519,9 +519,9 @@ public class GUIController implements Initializable {
     	Alert alert = new Alert(AlertType.INFORMATION);
     	alert.initOwner(stage);
     	alert.initModality(Modality.APPLICATION_MODAL);
-    	alert.setTitle("SAIL 1.0: About");
-    	alert.setHeaderText("SAIL 1.0 details");
-    	alert.setContentText("SAIL 1.0");
+    	alert.setTitle("SAIL 1.1: About");
+    	alert.setHeaderText("SAIL 1.1 details");
+    	alert.setContentText("SAIL 1.1");
     	Label label = new Label("SAIL License details:");
 
     	TextArea textArea = new TextArea(getLicense());

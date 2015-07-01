@@ -3,8 +3,8 @@
 [Setup]
 AppId={{fxApplication}}
 AppName=SAIL
-AppVersion=1.0
-AppVerName=SAIL 1.0
+AppVersion=1.1
+AppVerName=SAIL 1.1
 AppPublisher=University of Illinois
 AppComments=SAIL
 AppCopyright=Copyright (C) 2015
@@ -23,7 +23,7 @@ DefaultGroupName=University of Illinois
 LicenseFile=
 ;WinXP or above
 MinVersion=0,5.1 
-OutputBaseFilename=SAIL-1.0
+OutputBaseFilename=SAIL-1.1
 Compression=lzma
 SolidCompression=yes
 PrivilegesRequired=lowest
