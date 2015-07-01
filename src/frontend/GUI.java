@@ -25,7 +25,11 @@ import javafx.stage.Stage;
  * @author ltao3
  */
 public class GUI extends Application {
-	GUIController controller;
+	
+	public static final String configFile = "./data/config.properties";
+	public static final String configDefaultsFile = "./data/config.defaults.properties";
+	public static final String licenseFile = "./data/license.txt";
+	public GUIController controller;
     @Override
     public void start(Stage stage) throws Exception {
     	stage.setTitle("SAIL (Sentiment Analysis and Incremental Learning)");

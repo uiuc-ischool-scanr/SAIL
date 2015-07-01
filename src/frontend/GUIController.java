@@ -10,11 +10,16 @@ package frontend;
 //import com.sun.javafx.scene.control.skin.SkinBase;
 import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileOutputStream;
 import java.io.FileReader;
+import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.ResourceBundle;
+
+
 
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
@@ -57,7 +62,12 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.util.Callback;
 
+
+
 import org.apache.commons.io.FilenameUtils;
+
+
+
 import sentinets.Prediction.MODELTYPE;
 import core.AnnotationTask;
 import core.AppProperties;
@@ -536,7 +546,7 @@ public class GUIController implements Initializable {
     }
 
     private String getLicense(){
-    	String file = "./data/license.txt";
+    	String file = GUI.licenseFile;
     	StringBuilder output = new StringBuilder();
     	try (BufferedReader br = new BufferedReader(new FileReader(file))) {
     	    String line;
@@ -549,6 +559,27 @@ public class GUIController implements Initializable {
     		e.printStackTrace();
     	}
     	return output.toString();
+    	
+    }
+    
+    @FXML
+    void editPreferences(ActionEvent event) {
+    	EditPreferences dialog = new EditPreferences(stage);
+    	Optional<AppProperties> result = dialog.showAndWait();
+    	result.ifPresent(props -> {
+    		System.out.println("Updating preferences to: ");
+    		System.out.println(props.toString());
+    		System.out.println("Saving in file: "+GUI.configFile);
+    		FileOutputStream saveFile;
+    		try {
+    			saveFile = new FileOutputStream(GUI.configFile);
+				props.store(saveFile, "Saving file");
+				saveFile.close();
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+    	});
     	
     }
     

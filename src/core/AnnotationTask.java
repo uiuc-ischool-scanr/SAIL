@@ -41,6 +41,7 @@ import au.com.bytecode.opencsv.CSVWriter;
 
 import com.sun.net.httpserver.HttpServer;
 
+import frontend.GUI;
 import frontend.Tweet;
 
 /**
@@ -76,7 +77,7 @@ public class AnnotationTask {
 			server.stop(0);
 		}
 		server = null;
-		setConfigFile("./data/config.properties");
+		setConfigFile(GUI.configFile);
 		customProps = false;
 		
 	}
