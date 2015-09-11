@@ -80,6 +80,8 @@ Citing SAIL:
 -------------
 While not a condition of use, the developers would appreciate if you acknowledge its use with a citation:
 
+Mishra, Shubhanshu, Jana Diesner, Jason Byrne, and Elizabeth Surbeck. "Sentiment Analysis with Incremental Human-in-the-Loop Learning and Lexical Resource Customization." In Proceedings of the 26th ACM Conference on Hypertext & Social Media, pp. 323-325. ACM, 2015.
+
 Diesner, Jana., Mishra, Shubhanshu., Tao, Liang., Chin, Chieh-Li. (2015). SAIL: Sentiment Analysis and Incremental Learning [Software]. Available from http://people.lis.illinois.edu/~jdiesner/sail.html
 
 
