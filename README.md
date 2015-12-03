@@ -19,7 +19,7 @@ Contributors:
 License:
 --------
 ### SAIL Application Executable Files
-The SAIL Application Executable Files (i.e. SAIL.dmg, SAIL-1.0-x64.exe, SAIL-1.0-x86.exe, SAIL.jar, and SAIL.zip) are licensed under **GNU General Public License version 3.0 or later** license.
+The SAIL Application Executable Files (i.e. SAIL.dmg, SAIL-1.x-x64.exe, SAIL-1.x-x86.exe, SAIL.jar, and SAIL.zip) are licensed under **GNU General Public License version 3.0 or later** license.
 
 The executable files include the following:
 * The application code, packaged into a set of JAR files, plus any other application resources (data files, native libraries)
@@ -79,6 +79,8 @@ http://www.aclweb.org/anthology/S/S13/S13-2052.pdf
 Citing SAIL:
 -------------
 While not a condition of use, the developers would appreciate if you acknowledge its use with a citation:
+
+Mishra, Shubhanshu, Jana Diesner, Jason Byrne, and Elizabeth Surbeck. "Sentiment Analysis with Incremental Human-in-the-Loop Learning and Lexical Resource Customization." In Proceedings of the 26th ACM Conference on Hypertext & Social Media, pp. 323-325. ACM, 2015.
 
 Diesner, Jana., Mishra, Shubhanshu., Tao, Liang., Chin, Chieh-Li. (2015). SAIL: Sentiment Analysis and Incremental Learning [Software]. Available from http://people.lis.illinois.edu/~jdiesner/sail.html
 
