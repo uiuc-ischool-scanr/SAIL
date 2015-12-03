@@ -12,6 +12,9 @@
  */
 package frontend;
 
+import java.io.FileNotFoundException;
+import java.io.PrintStream;
+
 import javafx.application.Application;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -74,6 +77,15 @@ public class GUI extends Application {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
+    	try {
+			System.setOut(new PrintStream("log.stdout.txt"));
+			System.setErr(new PrintStream("log.stderr.txt"));
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+    	System.out.println("This is the first output to the log.stdout.txt file");
+    	System.err.println("This is the first output to the log.stderr.txt file");
         launch(args);
     }
     
