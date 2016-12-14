@@ -4,16 +4,18 @@ SAIL is a tool which gives users the convenience of doing sentiment analysis usi
 The tool also supports incremental learning of the existing models by adding new labeled data.
 
 The model accuracy can be improved by using domain specific lexicons and query terms.  
+Our software architecture is as follows:
+![Software architecture](FlowChart.png)
 
 
 Contributors:
 -------------
 
-* Shubhanshu Mishra <smishra8@illinois.edu>
-* Liang Tao <ltao3@illinois.edu>
-* Chieh-Li Chin <cchin6@illinois.edu>
+* [Shubhanshu Mishra](http://shubhanshu.com) - <smishra8@illinois.edu>
+* Liang Tao - <ltao3@illinois.edu>
+* Chieh-Li Chin - <cchin6@illinois.edu>
 
-**Advisor:** Jana Diesner <jdiesner@illinois.edu>
+**Advisor:** [Jana Diesner](http://people.ischool.illinois.edu/~jdiesner/) - <jdiesner@illinois.edu>
 
 
 License:
@@ -80,7 +82,7 @@ Citing SAIL:
 -------------
 While not a condition of use, the developers would appreciate if you acknowledge its use with a citation:
 
-Mishra, Shubhanshu, Jana Diesner, Jason Byrne, and Elizabeth Surbeck. "Sentiment Analysis with Incremental Human-in-the-Loop Learning and Lexical Resource Customization." In Proceedings of the 26th ACM Conference on Hypertext & Social Media, pp. 323-325. ACM, 2015.
+[Mishra, Shubhanshu, Jana Diesner, Jason Byrne, and Elizabeth Surbeck. "Sentiment Analysis with Incremental Human-in-the-Loop Learning and Lexical Resource Customization." In Proceedings of the 26th ACM Conference on Hypertext & Social Media, pp. 323-325. ACM, 2015.](http://dl.acm.org/citation.cfm?id=2791022) http://dl.acm.org/citation.cfm?id=2791022
 
 Diesner, Jana., Mishra, Shubhanshu., Tao, Liang., Chin, Chieh-Li. (2015). SAIL: Sentiment Analysis and Incremental Learning [Software]. Available from http://people.lis.illinois.edu/~jdiesner/sail.html
 
